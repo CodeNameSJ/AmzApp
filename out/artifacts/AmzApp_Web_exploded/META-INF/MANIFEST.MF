@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: jamad
+Build-Jdk: Oracle OpenJDK 24.0.1
+Implementation-Title: AmzApp
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: org.practice
+Main-Class: ${start-class}
+
