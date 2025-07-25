@@ -14,7 +14,7 @@ public class UserController {
 	public String login(@ModelAttribute("user") User user) {
 		return "Login Success";
 	}
-	
+
 	@GetMapping("/validate")
 	@ResponseBody
 	public String validate(@ModelAttribute("user") User user) {

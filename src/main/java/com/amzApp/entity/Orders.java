@@ -19,11 +19,11 @@ public class Orders {
 		this.prod = prod;
 	}
 
-	public void setId(Long oid) {
-		this.oid = oid;
-	}
-
 	public Long getId() {
 		return oid;
+	}
+
+	public void setId(Long oid) {
+		this.oid = oid;
 	}
 }

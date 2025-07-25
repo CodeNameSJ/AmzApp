@@ -1,4 +1,3 @@
 package com.amzApp.dto;
 
-public class OrdersDTO {
-}
+public class OrdersDTO {}

@@ -10,12 +10,12 @@ public class Cart {
 	@Id
 	private Long cartId;
 
-	public void setCartId(Long cartId) {
-		this.cartId = cartId;
-	}
-
 	public Long getCartId() {
 		return cartId;
+	}
+
+	public void setCartId(Long cartId) {
+		this.cartId = cartId;
 	}
 
 }
