@@ -8,7 +8,7 @@
 <body>
 
 <footer class="footer">
-    <p style="color:red">All rights reserved.</p>
+    <p style="color:darkcyan">All rights reserved.</p>
 </footer>
 </body>
 </html>
