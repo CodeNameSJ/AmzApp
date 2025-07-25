@@ -5,39 +5,104 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <%@ include file="/WEB-INF/views/common/header.jsp" %>
+    <%@ include file="common/header.jsp" %>
+    <style>.form {
+        --bg-light: #efefef;
+        --bg-dark: #707070;
+        --clr: #58bc82;
+        --clr-alpha: #9c9c9c60;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .form .input-span {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form input[type="text"],
+    .form input[type="email"],
+    .form input[type="password"] {
+        border-radius: 0.5rem;
+        padding: 1rem 0.75rem;
+        width: 100%;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: var(--clr-alpha);
+        outline: 2px solid var(--bg-dark);
+    }
+
+    .form input[type="text"]:focus,
+    .form input[type="email"]:focus,
+    .form input[type="password"]:focus {
+        outline: 2px solid var(--clr);
+    }
+
+    .label {
+        align-self: flex-start;
+        color: var(--clr);
+        font-weight: 600;
+    }
+
+    .form .submit {
+        padding: 1rem 0.75rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 3rem;
+        background-color: var(--bg-dark);
+        color: var(--bg-light);
+        border: none;
+        cursor: pointer;
+        transition: all 300ms;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .form .submit:hover {
+        background-color: var(--clr);
+        color: var(--bg-dark);
+    }
+
+    .span {
+        text-decoration: none;
+        color: var(--bg-dark);
+    }
+
+    .span a {
+        color: var(--clr);
+    }
+    </style>
 </head>
 <body>
-<main style="margin:120px;">
+<main style="width: 100vw; height: 100vh">
     <h2>Sign Up</h2>
-    <form action="${pageContext.request.contextPath}/register" method="post">
-        <label>Full Name:</label><br>
-        <label>
-            <input type="text" name="fullName" required/>
-        </label><br><br>
-
-        <label>Email:</label><br>
-        <label>
-            <input type="email" name="email" required/>
-        </label><br><br>
-
-        <label>Password:</label><br>
-        <label>
-            <input type="password" id="password" name="password" required/>
-        </label><br><br>
-
-        <%--        <label>Confirm Password:</label><br>--%>
-        <%--        <label>--%>
-        <%--            <input type="password" id="confirmPassword" name="confirmPassword" required/>--%>
-        <%--            <span id="passwordError" class="error"></span>--%>
-        <%--        </label><br><br>--%>
-
-        <input type="submit" value="Sign Up"/>
+    <form class="form" action="${pageContext.request.contextPath}/register" method="post" data-theme="dark">
+        <span class="input-span">
+    <label for="name" class="label">Name</label>
+    <input type="text" name="name" id="name"/></span>
+        <span class="input-span">
+    <label for="email" class="label">Email</label>
+    <input type="email" name="email" id="email"/></span>
+        <span class="input-span">
+    <label for="password" class="label">Password</label>
+    <input type="password" name="password" id="password"/></span>
+        <span class="span"><a href="#">Forgot password?</a></span>
+        <input class="submit" type="submit" value="Sign Up" style="justify-content: center"/>
+        <span class="span">Already have an account?<a
+                href="${pageContext.request.contextPath}/login">Login</a></span>
     </form>
-    <p>Already have an account? <a href="${pageContext.request.contextPath}/login">Login</a></p>
-
 </main>
 
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<%@ include file="common/footer.jsp" %>
 </body>
 </html>

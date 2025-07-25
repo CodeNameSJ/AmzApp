@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <%@ include file="/WEB-INF/views/common/header.jsp" %>
+    <%@ include file="common/header.jsp" %>
 
     <style>.form {
         --bg-light: #efefef;
@@ -83,39 +83,22 @@
     </style>
 </head>
 <body>
-<main style="margin:120px;" data-theme="dark">
-    <%--    <h2>Login</h2>--%>
-    <%--    <form action="${pageContext.request.contextPath}/user/sign-in" method="post">--%>
-    <%--        <label>Email:</label><br>--%>
-    <%--        <label>--%>
-    <%--            <input type="text" name="email" required/>--%>
-    <%--        </label><br><br>--%>
 
-    <%--        <label>Password:</label><br>--%>
-    <%--        <label>--%>
-    <%--            <input type="password" name="password" required/>--%>
-    <%--        </label><br><br>--%>
-
-    <%--        <input type="submit" value="Login"/>--%>
-    <%--    </form>--%>
-    <%--    <p>Don't have an account? <a href="${pageContext.request.contextPath}/signup">Sign up</a></p>--%>
-
-    <form class="form" action="${pageContext.request.contextPath}/user/sign-in" method="post" data-theme="dark">
+<main style="width: 100vw; height: 100vh">
+    <h2 class="form">Login</h2>
+    <form class="form" action="${pageContext.request.contextPath}/sign-in" method="post" data-theme="dark">
     <span class="input-span">
     <label for="email" class="label">Email</label>
-    <input type="email" name="email" id="email"
-    /></span>
+    <input type="email" name="email" id="email"/></span>
         <span class="input-span">
     <label for="password" class="label">Password</label>
-    <input type="password" name="password" id="password"
-    /></span>
+    <input type="password" name="password" id="password"/></span>
         <span class="span"><a href="#">Forgot password?</a></span>
-        <input class="submit" type="submit" value="Log in" style="align-content: center"/>
+        <input class="submit" type="submit" value="Log in" style="justify-content: center"/>
         <span class="span">Don't have an account? <a
-                href="${pageContext.request.contextPath}/user/signup">Sign up</a></span>
+                href="${pageContext.request.contextPath}/signup">Sign up</a></span>
     </form>
-
 </main>
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<%@ include file="common/footer.jsp" %>
 </body>
 </html>
