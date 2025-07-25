@@ -3,5 +3,4 @@ package com.amzApp.service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrdersService {
-}
+public class OrdersService {}

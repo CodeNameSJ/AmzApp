@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class CustomerController {
 	private final CustomerService customerService;
-	
+
 	public CustomerController(CustomerService customerService) {
 		this.customerService = customerService;
 	}
-	
+
 	@PostMapping("/register")
 	@ResponseBody
 	public String signup(@ModelAttribute Customer customer) {
