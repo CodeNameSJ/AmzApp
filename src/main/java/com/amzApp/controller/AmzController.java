@@ -11,7 +11,10 @@ public class AmzController {
 		return "index";
 	}
 	
-	
+	@GetMapping("/products")
+	public String products() {
+		return "products";
+	}
 	@GetMapping("/login")
 	public String login() {
 		return "login";
