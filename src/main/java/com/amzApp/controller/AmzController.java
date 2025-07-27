@@ -15,14 +15,5 @@ public class AmzController {
 	public String products() {
 		return "products";
 	}
-
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
-
-	@GetMapping("/signup")
-	public String signup() {
-		return "signup";
-	}
+	
 }
