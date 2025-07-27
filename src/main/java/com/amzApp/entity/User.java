@@ -1,20 +1,28 @@
 package com.amzApp.entity;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 @Component
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private String fullName;
 
+	@Column(unique = true, nullable = false)
 	private String email;
 	private String password;
+
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	public User() {
 
 	}
 
 	public User(String email, String password) {
-		this.email = email;
-		this.password = password;
 	}
 
 	@Override
@@ -27,7 +35,6 @@ public class User {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
 	}
 
 
@@ -36,6 +43,5 @@ public class User {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
 	}
 }

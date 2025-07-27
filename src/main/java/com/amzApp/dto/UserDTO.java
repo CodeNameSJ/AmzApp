@@ -1,11 +1,8 @@
 package com.amzApp.dto;
 
 public class UserDTO {
-	String userName;
-	String password;
-	String confirmPassword;
+	private String name;
+	private String email;
+	private String password;
 
-	public String getUserName() {
-		return userName;
-	}
 }
