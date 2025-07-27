@@ -6,9 +6,12 @@ public class UserDTO {
 	String confirmPassword;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	public String getUserName() {
 		return userName;
 =======
+=======
+>>>>>>> Stashed changes
 	public String getEmail() {
 		return email;
 	}
@@ -31,6 +34,9 @@ public class UserDTO {
 
 	public void setName(String name) {
 		this.name = name;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	}
 }
