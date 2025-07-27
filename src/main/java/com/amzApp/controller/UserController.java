@@ -1,16 +1,11 @@
 package com.amzApp.controller;
 
 import com.amzApp.dto.UserDTO;
-
 import com.amzApp.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import com.amzApp.entity.User;
-import com.amzApp.service.UserService;
-import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -43,9 +38,23 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public String processLogin(@ModelAttribute("user") UserDTO userDto, Model model) {
+	public String processLogin(@ModelAttribute("user") UserDTO userDto, Model model, HttpSession session) {
+
 		String result = userService.loginUser(userDto);
+
+		if (result.equals("Login Successful!")) {
+			session.setAttribute("email", userDto.getEmail());
+			return "redirect:/home";
+		}
+
 		model.addAttribute("message", result);
 		return "login";
 	}
+
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
+	}
+
 }

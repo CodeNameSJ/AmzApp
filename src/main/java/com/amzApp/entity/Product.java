@@ -1,7 +1,9 @@
 package com.amzApp.entity;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 public class Product {
 

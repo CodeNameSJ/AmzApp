@@ -11,7 +11,7 @@
 
 <main>
 	<h2 class="form">Login</h2>
-	<form class="form" action="${pageContext.request.contextPath}/sign-in" method="post">
+	<form class="form" action="${pageContext.request.contextPath}/login" method="post">
     <span class="input-span">
     <label for="email" class="label">Email</label>
     <input type="email" name="email" id="email"/></span>

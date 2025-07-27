@@ -15,5 +15,5 @@ public class AmzController {
 	public String products() {
 		return "products";
 	}
-	
+
 }

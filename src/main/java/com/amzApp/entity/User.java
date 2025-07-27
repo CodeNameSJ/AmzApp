@@ -4,20 +4,18 @@ import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 @Component
+@Entity
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String name;
 
-	private String fullName;
-
-
 	@Column(unique = true, nullable = false)
 	private String email;
-	private String password;
 
+	private String password;
 
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -50,11 +48,6 @@ public class User {
 	}
 
 	public void setRole(Role role) {}
-
-	@Override
-	public String toString() {
-		return "UserRepository{" + "email='" + email + '\'' + ", password='" + password + '\'' + '}';
-	}
 
 	public String getEmail() {
 		return email;
