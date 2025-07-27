@@ -1,9 +1,15 @@
 package com.amzApp.service;
 
 import com.amzApp.dto.UserDTO;
+
+import com.amzApp.entity.Role;
+import com.amzApp.entity.User;
+
 import com.amzApp.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -13,36 +19,34 @@ public class UserService {
 		this.userRepository = userRepository;
 	}
 
-	@Transactional
+
+
 	public String registerUser(UserDTO userDto) {
-		userRepository.save(userDto);
-		return "";
+		Optional<User> existing = userRepository.findByEmail(userDto.getEmail());
+		if (existing.isPresent()) {
+			return "Email already registered!";
+		}
+
+		User user = new User();
+		user.setName(userDto.getName());
+		user.setEmail(userDto.getEmail());
+		user.setPassword(userDto.getPassword());
+		user.setRole(Role.CUSTOMER);
+
+		userRepository.save(user);
+		return "Registered Successfully!";
 	}
 
-	boolean authenticate(String email, String password) {
-
-		return true;
-	}
-
-	public String findByName(String name) {
-		return "";
-	}
-
-	public String findByEmail(String email) {
-
-		return "";
-	}
-
-	public String findByPhone(String phone) {
-		return "";
-	}
-
-	@Transactional
-	public void deleteByName(String name) {
-
-	}
-
-	public void updateByName(String name, String email, String phone) {
-
+	public String loginUser(UserDTO userDto) {
+		Optional<User> userOpt = userRepository.findByEmail(userDto.getEmail());
+		if (userOpt.isPresent()) {
+			User user = userOpt.get();
+			if (user.getPassword().equals(userDto.getPassword())) {
+				return "Login Successful!";
+			} else {
+				return "Invalid Password!";
+			}
+		}
+		return "User Not Found!";
 	}
 }
