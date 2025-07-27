@@ -9,12 +9,12 @@
 	if (userEmail != null) {
 %>
 <h2>Welcome, <%= userEmail %>!</h2>
-<a href="/logout">Logout</a>
+<a href="${pageContext.request.contextPath}/logout">Logout</a>
 <%
 } else {
 %>
 <h2>You are not logged in!</h2>
-<a href="/login">Login</a>
+<a href="${pageContext.request.contextPath}/login">Login</a>
 <%
 	}
 %>
