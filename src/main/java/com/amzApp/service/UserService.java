@@ -1,10 +1,13 @@
 package com.amzApp.service;
 
 import com.amzApp.dto.UserDTO;
+
 import com.amzApp.entity.Role;
 import com.amzApp.entity.User;
+
 import com.amzApp.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -15,6 +18,7 @@ public class UserService {
 	UserService(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
+
 
 
 	public String registerUser(UserDTO userDto) {

@@ -5,6 +5,7 @@ public class UserDTO {
 	private String email;
 	private String password;
 
+
 	public String getEmail() {
 		return email;
 	}
@@ -28,4 +29,5 @@ public class UserDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 }
