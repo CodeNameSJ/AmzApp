@@ -1,33 +1,28 @@
 package com.amzApp.entity;
 
+import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
 @Component
 public class User {
-<<<<<<< Updated upstream
-=======
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
+	@Column(unique = true, nullable = false)
 	private String email;
 	private String password;
+
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	public User() {
 
 	}
 
 	public User(String email, String password) {
-		this.email = email;
-		this.password = password;
 	}
 
 	public Long getId() {
@@ -62,7 +57,6 @@ public class User {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getPassword() {
@@ -70,6 +64,5 @@ public class User {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
 	}
 }

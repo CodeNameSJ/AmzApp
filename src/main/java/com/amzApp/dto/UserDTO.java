@@ -1,20 +1,10 @@
 package com.amzApp.dto;
 
 public class UserDTO {
-	String userName;
-	String password;
-	String confirmPassword;
+	private String name;
+	private String email;
+	private String password;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-	public String getUserName() {
-		return userName;
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 	public String getEmail() {
 		return email;
 	}
@@ -37,12 +27,5 @@ public class UserDTO {
 
 	public void setName(String name) {
 		this.name = name;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 	}
 }

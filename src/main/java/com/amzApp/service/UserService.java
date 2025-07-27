@@ -1,11 +1,5 @@
 package com.amzApp.service;
 
-<<<<<<< Updated upstream
-import org.springframework.stereotype.Service;
-
-@Service
-public class UserService {}
-=======
 import com.amzApp.dto.UserDTO;
 import com.amzApp.entity.Role;
 import com.amzApp.entity.User;
@@ -51,13 +45,4 @@ public class UserService {
 		}
 		return "User Not Found!";
 	}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 }
->>>>>>> Stashed changes
-=======
-}
->>>>>>> Stashed changes
-=======
-}
->>>>>>> Stashed changes

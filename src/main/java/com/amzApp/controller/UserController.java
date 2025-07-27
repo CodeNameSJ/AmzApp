@@ -1,44 +1,15 @@
 package com.amzApp.controller;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-import com.amzApp.entity.User;
-import org.springframework.stereotype.Controller;
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 import com.amzApp.dto.UserDTO;
 import com.amzApp.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
-<<<<<<< Updated upstream
-	@PostMapping("/sign-in")
-	@ResponseBody
-	public String login(@ModelAttribute("user") User user) {
-		return "Login Success";
-	}
-
-	@GetMapping("/validate")
-	@ResponseBody
-	public String validate(@ModelAttribute("user") User user) {
-		return "Validate Success";
-=======
 
 	final UserService userService;
 
@@ -70,12 +41,5 @@ public class UserController {
 		String result = userService.loginUser(userDto);
 		model.addAttribute("message", result);
 		return "login";
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 	}
 }
