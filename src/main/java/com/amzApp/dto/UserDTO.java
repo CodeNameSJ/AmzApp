@@ -7,9 +7,12 @@ public class UserDTO {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	public String getUserName() {
 		return userName;
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 	public String getEmail() {
@@ -35,6 +38,9 @@ public class UserDTO {
 	public void setName(String name) {
 		this.name = name;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

@@ -7,8 +7,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 public interface UserRepository extends JpaRepository<User, String> {}
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 public interface UserRepository extends JpaRepository<User, String> {

@@ -52,6 +52,10 @@ public class UserService {
 		return "User Not Found!";
 	}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes
 =======

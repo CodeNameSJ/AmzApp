@@ -2,9 +2,12 @@ package com.amzApp.controller;
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import com.amzApp.entity.User;
 import org.springframework.stereotype.Controller;
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 import com.amzApp.dto.UserDTO;
@@ -12,6 +15,9 @@ import com.amzApp.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -65,6 +71,9 @@ public class UserController {
 		model.addAttribute("message", result);
 		return "login";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
