@@ -43,7 +43,7 @@ public class UserController {
 		String result = userService.loginUser(userDto);
 
 		if (result.equals("Login Successful!")) {
-			session.setAttribute("email", userDto.getEmail());
+			session.setAttribute("email", userDto.getName());
 			return "redirect:/home";
 		}
 

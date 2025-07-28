@@ -5,10 +5,11 @@
 <body>
 
 <%
-	String userEmail = (String) session.getAttribute("userEmail");
-	if (userEmail != null) {
+	String email = (String) session.getAttribute("email");
+    //noinspection IfStatementWithIdenticalBranches
+    if (email != null) {
 %>
-<h2>Welcome, <%= userEmail %>!</h2>
+<h2>Welcome, <%= email %>!</h2>
 <a href="${pageContext.request.contextPath}/logout">Logout</a>
 <%
 } else {
