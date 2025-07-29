@@ -15,13 +15,15 @@ public class Product {
 	private String name;
 
 	@Column(nullable = false)
+	private String category;
+
+	@Column(nullable = false)
 	private double price;
 
 	@Column(nullable = false)
 	private int quantity;
 
-	@Column(nullable = false)
-	private String category;
+	private String imageUrl;
 
 	public Product() {}
 
