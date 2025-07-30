@@ -1,6 +1,7 @@
 package com.amzApp.controller;
 
 import com.amzApp.dto.UserDTO;
+import com.amzApp.entity.User;
 import com.amzApp.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -42,8 +45,10 @@ public class UserController {
 
 		String result = userService.loginUser(userDto);
 
+		Optional<User> userByEmail = userService.getUserByEmail(userDto.getEmail());
+
 		if (result.equals("Login Successful!")) {
-			session.setAttribute("email", userDto.getName());
+			session.setAttribute("email", userByEmail.get().getName());
 			return "redirect:/home";
 		}
 

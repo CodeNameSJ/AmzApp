@@ -6,8 +6,8 @@
 
 <%
 	String email = (String) session.getAttribute("email");
-    //noinspection IfStatementWithIdenticalBranches
-    if (email != null) {
+	//noinspection IfStatementWithIdenticalBranches
+	if (email != null) {
 %>
 <h2>Welcome, <%= email %>!</h2>
 <a href="${pageContext.request.contextPath}/logout">Logout</a>

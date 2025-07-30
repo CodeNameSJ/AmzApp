@@ -10,15 +10,14 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-	final UserRepository userRepository;
+	final UserRepository userRepo;
 
-	UserService(UserRepository userRepository) {
-		this.userRepository = userRepository;
+	UserService(UserRepository userRepo) {
+		this.userRepo = userRepo;
 	}
 
-
 	public String registerUser(UserDTO userDto) {
-		Optional<User> existing = userRepository.findByEmail(userDto.getEmail());
+		Optional<User> existing = userRepo.findByEmail(userDto.getEmail());
 		if (existing.isPresent()) {
 			return "Email already registered!";
 		}
@@ -29,16 +28,14 @@ public class UserService {
 		user.setPassword(userDto.getPassword());
 		user.setRole(Role.CUSTOMER);
 
-		userRepository.save(user);
+		userRepo.save(user);
 		return "Registered Successfully!";
 	}
 
 	public String loginUser(UserDTO userDto) {
-		Optional<User> userOpt = userRepository.findByEmail(userDto.getEmail());
+		Optional<User> userOpt = userRepo.findByEmail(userDto.getEmail());
 		if (userOpt.isPresent()) {
 			User user = userOpt.get();
-
-			// getnamebyid
 
 			if (user.getPassword().equals(userDto.getPassword())) {
 				return "Login Successful!";
@@ -47,5 +44,9 @@ public class UserService {
 			}
 		}
 		return "User Not Found!";
+	}
+
+	public Optional<User> getUserByEmail(String email) {
+		return userRepo.findByEmail(email);
 	}
 }
