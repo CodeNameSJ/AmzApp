@@ -1,62 +1,31 @@
-<%@ page contentType="text/html; ISO-8859-1; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-	<%@ include file="common/header.jsp" %>
+	<title>Login</title>
+	<link rel="stylesheet" href="../../resources/css/styles.css"/>
 </head>
 <body>
+<header class="header">
+	<div class="logo">My Shop</div>
+</header>
 
-<main>
-	<h2 class="form">Login</h2>
-
-	<!-- Merged Form -->
-	<form:form method="POST" action="/login" modelAttribute="user" class="form">
-		<!-- Email Field -->
-		<span class="input-span">
-        <label for="email" class="label">Email</label>
-        <form:input path="email" id="email"/>
-    </span>
-
-		<!-- Password Field -->
-		<span class="input-span">
-        <label for="password" class="label">Password</label>
-        <form:password path="password" id="password"/>
-    </span>
-
-		<!-- Forgot Password Link -->
-		<span class="span"><a href="#">Forgot password?</a></span>
-
-		<!-- Submit Button -->
-		<input class="submit" type="submit" value="Log in"/>
-
-		<!-- Sign-up Link -->
-		<span class="span">Don't have an account? <a href="${pageContext.request.contextPath}/signup">Sign up</a></span>
+<div style="max-width:400px;margin:40px auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);">
+	<h2>Login</h2>
+	<form:form method="POST" modelAttribute="user">
+		<label>Email:</label><br/>
+		<form:input path="email"/><br/><br/>
+		<label>Password:</label><br/>
+		<form:password path="password"/><br/><br/>
+		<button class="btn-primary" type="submit">Login</button>
 	</form:form>
+	<c:if test="${not empty message}"><p style="color:red;">${message}</p></c:if>
+</div>
 
-	<!-- Display message if there is any -->
-	<c:if test="${not empty message}">
-		<p>${message}</p>
-	</c:if>
-
-	<%--	--%>
-	<%--	<h2 class="form">Login</h2>--%>
-	<%--	<form class="form" action="${pageContext.request.contextPath}/login" method="post">--%>
-	<%--    <span class="input-span">--%>
-	<%--    <label for="email" class="label">Email</label>--%>
-	<%--    <input type="email" name="email" id="email"/></span>--%>
-	<%--		<span class="input-span">--%>
-	<%--    <label for="password" class="label">Password</label>--%>
-	<%--    <input type="password" name="password" id="password"/></span>--%>
-	<%--		<span class="span"><a href="#">Forgot password?</a></span>--%>
-	<%--		<input class="submit" type="submit" value="Log in"/>--%>
-	<%--		<span class="span">Don't have an account? <a--%>
-	<%--				href="${pageContext.request.contextPath}/signup">Sign up</a></span>--%>
-	<%--	</form>--%>
-</main>
-<%@ include file="common/footer.jsp" %>
+<footer class="footer">
+	&copy; 2025 My Shop
+</footer>
 </body>
 </html>

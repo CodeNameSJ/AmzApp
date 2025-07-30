@@ -21,6 +21,11 @@ public class UserController {
 		this.userService = userService;
 	}
 
+	private boolean isAdmin(HttpSession session) {
+		String role = (String) session.getAttribute("role");
+		return role != null && role.equals("ADMIN");
+	}
+
 	@GetMapping("/signup")
 	public String showSignupPage(Model model) {
 		model.addAttribute("user", new UserDTO());
@@ -49,6 +54,8 @@ public class UserController {
 
 		if (result.equals("Login Successful!")) {
 			session.setAttribute("email", userByEmail.get().getName());
+			session.setAttribute("role", userByEmail.get().getRole().name());
+
 			return "redirect:/home";
 		}
 
@@ -61,5 +68,4 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/login";
 	}
-
 }

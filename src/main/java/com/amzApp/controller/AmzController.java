@@ -15,10 +15,4 @@ public class AmzController {
 	public String showHomePage() {
 		return "home";
 	}
-
-	@GetMapping("/products")
-	public String products() {
-		return "products";
-	}
-
 }

@@ -6,18 +6,19 @@ import com.amzApp.entity.User;
 import com.amzApp.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
-	final UserRepository userRepo;
+	final UserRepository userRepository;
 
-	UserService(UserRepository userRepo) {
-		this.userRepo = userRepo;
+	UserService(UserRepository userRepository) {
+		this.userRepository = userRepository;
 	}
 
 	public String registerUser(UserDTO userDto) {
-		Optional<User> existing = userRepo.findByEmail(userDto.getEmail());
+		Optional<User> existing = userRepository.findByEmail(userDto.getEmail());
 		if (existing.isPresent()) {
 			return "Email already registered!";
 		}
@@ -28,12 +29,12 @@ public class UserService {
 		user.setPassword(userDto.getPassword());
 		user.setRole(Role.CUSTOMER);
 
-		userRepo.save(user);
+		userRepository.save(user);
 		return "Registered Successfully!";
 	}
 
 	public String loginUser(UserDTO userDto) {
-		Optional<User> userOpt = userRepo.findByEmail(userDto.getEmail());
+		Optional<User> userOpt = userRepository.findByEmail(userDto.getEmail());
 		if (userOpt.isPresent()) {
 			User user = userOpt.get();
 
@@ -47,6 +48,23 @@ public class UserService {
 	}
 
 	public Optional<User> getUserByEmail(String email) {
-		return userRepo.findByEmail(email);
+		return userRepository.findByEmail(email);
 	}
+
+	public List<User> getAllUsers() {
+		return userRepository.findAll();
+	}
+
+	public void deleteUserById(Long id) {
+		userRepository.deleteById(id);
+	}
+
+	public User getUserById(Long id) {
+		return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+	}
+
+	public void updateUser(User user) {
+		userRepository.save(user); // assumes ID is present, so it updates
+	}
+
 }
