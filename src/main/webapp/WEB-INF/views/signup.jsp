@@ -1,64 +1,48 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page contentType="text/html; ISO-8859-1; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>AMZ | Sign Up</title>
-	<%@ include file="common/header.jsp" %>
-	<link rel="stylesheet" href="../../resources/css/styles.css">
+
+	<title>Sign Up - Polo Theme</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../resources/css/styles.css"/>
+
 </head>
-<body>
+<body class="dark-mode">
+<jsp:include page="common/header.jsp"/>
+
 <main>
-	<h2>Sign Up</h2>
+		<span class="span">Already have an account?<a
+				href="${pageContext.request.contextPath}/login">Login</a></span>
+	</form>
+=======
+	<div class="auth-form">
+		<h2>Sign Up</h2>
+		<form action="/signup" method="post">
+			<label for="name">Full Name</label>
+			<input type="text" id="name" name="name" required>
 
-	<%--    <label for="name" class="label">Name</label>--%>
-	<%--    <input type="text" name="name" id="name"/></span>--%>
-	<%--    <label for="email" class="label">Email</label>--%>
-	<%--    <input type="email" name="email" id="email"/></span>--%>
-	<%--    <label for="password" class="label">Password</label>--%>
-	<%--    <input type="password" name="password" id="password"/></span>--%>
-	<%--		<span class="span"><a href="#">Forgot password?</a></span>--%>
-	<%--		<input class="submit" type="submit" value="Sign Up"/>--%>
-	<%--		<span class="span">Already have an account?<a--%>
-	<%--				href="${pageContext.request.contextPath}/login">Login</a></span>--%>
-	<form:form method="POST" action="/signup" modelAttribute="user">
+			<label for="email">Email Address</label>
+			<input type="email" id="email" name="email" required>
 
-	<span class="input-span">
-			<label for="name" class="label">Name</label>
-			<br>
-			<form:input path="name" id="name"/>
-	</span>
-		<br>
-		<span class="input-span">
-			<label for="email" class="label">Email</label>
-			<br>
-			<form:input path="email" id="email"/>
-	</span>
-		<br>
-		<span class="input-span">
-			<label for="password" class="label">Password</label>
-			<br>
-			<form:password path="password" id="password" class="password" name="password"/>
-		</span>
-		<br>
-		<span class="span"><a href="#">Forgot password?</a></span>
-		<br>
-		<input class="submit" type="submit" value="Sign Up"/>
-		<br>
-		<span class="span">
-        Already have an account?
-        <a href="${pageContext.request.contextPath}/login">Login</a>
-    </span>
+			<label for="password">Password</label>
+			<input type="password" id="password" name="password" required>
 
-	</form:form>
+			<button type="submit" class="btn btn-primary">Create Account</button>
+		</form>
+	</div>
 
 	<c:if test="${not empty message}">
 		<p style="color: #58bc82">${message}</p>
 	</c:if>
 </main>
 
-<%@ include file="common/footer.jsp" %>
+<jsp:include page="common/footer.jsp"/>
+<script>
+	document.getElementById('theme-toggle').addEventListener('click', function () {
+		document.documentElement.classList.toggle('light-mode');
+	});
+</script>
 </body>
 </html>

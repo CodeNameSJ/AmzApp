@@ -1,40 +1,47 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jamad
-  Date: 30-07-2025
-  Time: 22:58
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ page contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Title</title>
+	<title>Products - Polo Theme</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../resources/css/styles.css"/>
 </head>
-<body>
-<h2>Product List</h2>
+<body class="dark-mode">
+<jsp:include page="../common/header.jsp"/>
 
-<a href="${pageContext.request.contextPath}/products/add">Add Product</a>
+<main class="container">
+	<h2>Products</h2>
+	<div class="grid">
+		<!-- Example product cards -->
+		<div class="card">
+			<img src="https://via.placeholder.com/300x200" alt="Product A">
+			<h3>Product A</h3>
+			<p>$29.99</p>
+			<button class="btn btn-primary">Add to Cart</button>
+		</div>
+		<div class="card">
+			<img src="https://via.placeholder.com/300x200" alt="Product B">
+			<h3>Product B</h3>
+			<p>$39.99</p>
+			<button class="btn btn-primary">Add to Cart</button>
+		</div>
+		<div class="card">
+			<img src="https://via.placeholder.com/300x200" alt="Product C">
+			<h3>Product C</h3>
+			<p>$49.99</p>
+			<button class="btn btn-primary">Add to Cart</button>
+		</div>
+		<!-- Add more products as needed -->
+	</div>
+</main>
 
-<table style="border:1px; mso-cellspacing:8px;">
-	<tr>
-		<th>ID</th>
-		<th>Name</th>
-		<th>Price</th>
-		<th>Actions</th>
-	</tr>
-	<c:forEach var="product" items="${products}">
-		<tr>
-			<td>${product.id}</td>
-			<td>${product.name}</td>
-			<td>${product.price}</td>
-			<td>
-				<a href="${pageContext.request.contextPath}/products/edit/${product.id}">Edit</a> |
-				<a href="${pageContext.request.contextPath}/products/delete/${product.id}">Delete</a>
-			</td>
-		</tr>
-	</c:forEach>
-</table>
+<jsp:include page="../common/footer.jsp"/>
+<script>
+	document.getElementById('theme-toggle').addEventListener('click', function () {
+		document.documentElement.classList.toggle('light-mode');
+	});
+</script>
 
 </body>
 </html>

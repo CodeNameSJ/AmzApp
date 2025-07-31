@@ -1,14 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Footer</title>
-	<link rel="stylesheet" href="../../resources/css/styles.css">
-</head>
-<body>
-
-<footer class="footer">
-	<p style="color:darkcyan">All rights reserved.</p>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<footer>
+	<div class="container">
+		<p>&copy; 2025 My Company. All rights reserved.</p>
+	</div>
 </footer>
-</body>
-</html>
