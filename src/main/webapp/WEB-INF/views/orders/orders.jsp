@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%@ include file="common/header.jsp" %>
+<%@ include file="../common/header.jsp" %>
 <main class="admin-section container">
 	<h2>Orders</h2>
 	<table class="admin-table">
@@ -23,4 +23,4 @@
 		</tbody>
 	</table>
 </main>
-<%@ include file="common/footer.jsp" %>
+<%@ include file="../common/footer.jsp" %>
