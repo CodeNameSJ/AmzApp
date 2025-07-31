@@ -1,63 +1,53 @@
-<<<<<<< Updated upstream
-<h1>Welcome to Our SaaS Platform</h1>
-<p>Home Page Content</p>
-=======
-<%@ page contentType="text/html; charset=UTF-8" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
-	<title>Home - Polo Theme</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Link Google Fonts for Montserrat and Playfair Display -->
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
-	      rel="stylesheet">
+	<title>Home</title>
 	<link rel="stylesheet" href="../../resources/css/styles.css"/>
 </head>
-<body class="dark-mode">
-<jsp:include page="common/header.jsp"/>
+<body>
 
-<main>
-	<!-- Hero Section -->
-	<section class="hero">
-		<div class="container">
-			<h1>UI/UX &amp; Graphic Designer</h1>
-			<h2>Johan Beker</h2>
-			<p>I’m a versatile designer specializing in graphic, web, and product design. Let’s build something great!</p>
-			<a href="products" class="btn btn-secondary">See All Products</a>
-			<a href="contact" class="btn btn-primary">Contact Now</a>
-		</div>
-	</section>
+<header class="header">
+	<div class="logo">My Shop</div>
+	<nav>
+		<c:choose>
+			<c:when test="${not empty sessionScope.userName}">
+				<span>Welcome, ${sessionScope.userName}</span>
+				<a href="${pageContext.request.contextPath}/logout/>">Logout</a>
+			</c:when>
+			<c:otherwise>
+				<a href="${pageContext.request.contextPath}/login/>">Login</a>
+				<a href="${pageContext.request.contextPath}/signup/>">Sign Up</a>
+			</c:otherwise>
+		</c:choose>
+	</nav>
+</header>
 
-	<!-- Featured Products / Projects Grid -->
-	<section class="container" style="padding-top: 2rem;">
-		<h2>Recent Projects</h2>
-		<div class="grid">
-			<!-- Placeholder cards -->
-			<div class="card">
-				<img src="https://via.placeholder.com/300x200" alt="Project 1">
-				<h3>Project One</h3>
-			</div>
-			<div class="card">
-				<img src="https://via.placeholder.com/300x200" alt="Project 2">
-				<h3>Project Two</h3>
-			</div>
-			<div class="card">
-				<img src="https://via.placeholder.com/300x200" alt="Project 3">
-				<h3>Project Three</h3>
-			</div>
-		</div>
-	</section>
-</main>
+<section class="hero">
+	<h1>Manage your store effortlessly</h1>
+	<p>Powerful backend with clean UI to run your ecommerce platform</p>
+	<a class="btn-primary" href="<c:url value='/products'/>">View Products</a>
+</section>
 
-<jsp:include page="common/footer.jsp"/>
+<section class="features">
+	<div class="feature-card">
+		<h3>🎯 Add & Edit Products</h3>
+		<p>Fully manage product catalog from dashboard.</p>
+	</div>
+	<div class="feature-card">
+		<h3>👥 Manage Users</h3>
+		<p>Admin can create, edit & delete users.</p>
+	</div>
+	<div class="feature-card">
+		<h3>🛒 Cart & Orders</h3>
+		<p>Customers can add to cart and place orders.</p>
+	</div>
+</section>
 
-<!-- Theme Toggle Script -->
-<script>
-	document.getElementById('theme-toggle').addEventListener('click', function () {
-		document.documentElement.classList.toggle('light-mode');
-	});
-</script>
+<footer class="footer">
+	&copy; 2025 My Shop. All rights reserved.
+</footer>
+
 </body>
 </html>
-
->>>>>>> Stashed changes

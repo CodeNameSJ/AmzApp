@@ -1,7 +1,20 @@
 package com.amzApp.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.proxy.HibernateProxy;
+import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@Component
 @Entity
 public class Product {
 
@@ -13,53 +26,29 @@ public class Product {
 	private String name;
 
 	@Column(nullable = false)
+	private String category;
+
+	@Column(nullable = false)
 	private double price;
 
 	@Column(nullable = false)
 	private int quantity;
 
-	@Column(nullable = false)
-	private String category;
+	private String imageUrl;
 
-	public Product() {}
-
-	public String getCategory() {
-		return category;
+	@Override
+	public final boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null) return false;
+		Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
+		Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
+		if (thisEffectiveClass != oEffectiveClass) return false;
+		Product product = (Product) o;
+		return getId() != null && Objects.equals(getId(), product.getId());
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	@Override
+	public final int hashCode() {
+		return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
 	}
 }
