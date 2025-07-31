@@ -49,7 +49,7 @@ public class CartController {
 		double total = cartItems.stream().mapToDouble(item -> item.getProduct().getPrice() * item.getQuantity()).sum();
 		model.addAttribute("total", total);
 
-		return "cart/view_cart"; // JSP page
+		return "cart/view_cart";
 	}
 
 	@GetMapping("/remove/{id}")
@@ -72,7 +72,7 @@ public class CartController {
 		double total = cartItems.stream().mapToDouble(item -> item.getProduct().getPrice() * item.getQuantity()).sum();
 
 		model.addAttribute("total", total);
-		return "cart/final_bill"; // JSP page
+		return "cart/final_bill";
 	}
 
 	@PostMapping("/confirm")

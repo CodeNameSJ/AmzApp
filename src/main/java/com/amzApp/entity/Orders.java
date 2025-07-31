@@ -1,6 +1,8 @@
 package com.amzApp.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +11,7 @@ import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
@@ -19,24 +22,16 @@ import java.util.Objects;
 @Entity
 public class Orders {
 	@Id
-	private Long oid;
-	private String prod;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	public String getProd() {
-		return prod;
-	}
+	private String userEmail;
 
-	public void setProd(String prod) {
-		this.prod = prod;
-	}
+	private double totalAmount;
 
-	public Long getId() {
-		return oid;
-	}
+	private LocalDateTime orderTime;
 
-	public void setId(Long oid) {
-		this.oid = oid;
-	}
+	private String status;
 
 	@Override
 	public final boolean equals(Object o) {
@@ -46,7 +41,7 @@ public class Orders {
 		Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
 		if (thisEffectiveClass != oEffectiveClass) return false;
 		Orders orders = (Orders) o;
-		return getOid() != null && Objects.equals(getOid(), orders.getOid());
+		return getId() != null && Objects.equals(getId(), orders.getId());
 	}
 
 	@Override
