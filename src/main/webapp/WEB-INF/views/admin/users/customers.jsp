@@ -1,42 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jamad
-  Date: 30-07-2025
-  Time: 22:56
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
-	<title>Title</title>
-</head>
-<body>
-
-<h2>Registered Customers</h2>
-
-<table border="1" cellpadding="8">
-	<tr>
-		<th>ID</th>
-		<th>Full Name</th>
-		<th>Email</th>
-		<th>Role</th>
-		<th>Action</th>
-	</tr>
-	<c:forEach var="user" items="${users}">
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ include file="../../common/header.jsp" %>
+<main class="admin-section container">
+	<h2>Customers</h2>
+	<a href="${pageContext.request.contextPath}/admin/users/add" class="btn btn-primary">Add Customer</a>
+	<table class="admin-table">
+		<thead>
 		<tr>
-			<td>${user.id}</td>
-			<td>${user.name}</td>
-			<td>${user.email}</td>
-			<td>${user.role}</td>
-			<td>
-				<a href="${pageContext.request.contextPath}/admin/users/edit/${user.id}">Edit</a> |
-				<a href="${pageContext.request.contextPath}/admin/users/delete/${user.id}"
-				   onclick="return confirm('Delete user?')">Delete</a>
-			</td>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Actions</th>
 		</tr>
-	</c:forEach>
-</table>
-
-</body>
-</html>
+		</thead>
+		<tbody>
+		<c:forEach var="c" items="${customers}">
+			<tr>
+				<td>${c.name}</td>
+				<td>${c.email}</td>
+				<td>
+					<a href="${pageContext.request.contextPath}/admin/users/edit/${c.id}">Edit</a>
+					<a href="${pageContext.request.contextPath}/admin/users/delete/${c.id}"
+					   onclick="return confirm('Delete this user?')">Delete</a>
+				</td>
+			</tr>
+		</c:forEach>
+		</tbody>
+	</table>
+</main>
+<%@ include file="../../common/footer.jsp" %>

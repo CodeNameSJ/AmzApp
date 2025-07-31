@@ -5,75 +5,68 @@ import com.amzApp.service.ProductService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-
+@RequestMapping("/products")
 public class ProductController {
 
-	final ProductService productService;
+	private final ProductService productService;
 
 	public ProductController(ProductService productService) {
 		this.productService = productService;
 	}
 
-	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	private boolean isAdmin(HttpSession session) {
 		String role = (String) session.getAttribute("role");
 		return role != null && role.equals("ADMIN");
 	}
 
-	@GetMapping("/products")
-	public String viewProducts(Model model) {
+	@GetMapping
+	public String viewAllProducts(Model model) {
 		model.addAttribute("products", productService.getAllProducts());
-		return "products";
+		return "products";  // This is for normal users
 	}
 
-	@GetMapping("/products/add")
-	public String showAddProductForm(Model model, HttpSession session) {
-		if (!isAdmin(session)) {
-			return "unauthorized";
-		}
+	@GetMapping("/admin")
+	public String viewAllProductsAdmin(Model model, HttpSession session) {
+		if (!isAdmin(session)) return "unauthorized";
+		model.addAttribute("products", productService.getAllProducts());
+		return "products_admin";  // Admin-only view
+	}
+
+	@GetMapping("/admin/add")
+	public String addProductForm(Model model, HttpSession session) {
+		if (!isAdmin(session)) return "unauthorized";
 		model.addAttribute("product", new Product());
 		return "product/add_product";
 	}
 
-	@PostMapping("/products/save")
-	public String saveProduct(@ModelAttribute("product") Product product, HttpSession session) {
-		if (!isAdmin(session)) {
-			return "unauthorized";
-		}
+	@PostMapping("/admin/add")
+	public String addProduct(@ModelAttribute("product") Product product, HttpSession session) {
+		if (!isAdmin(session)) return "unauthorized";
 		productService.saveProduct(product);
-		return "redirect:/products";
+		return "redirect:/products/admin";
 	}
 
-	@GetMapping("/products/edit/{id}")
-	public String editProduct(@PathVariable Long id, Model model, HttpSession session) {
-		if (!isAdmin(session)) {
-			return "unauthorized";
-		}
+	@GetMapping("/admin/edit/{id}")
+	public String editProductForm(@PathVariable Long id, Model model, HttpSession session) {
+		if (!isAdmin(session)) return "unauthorized";
 		model.addAttribute("product", productService.getProductById(id));
 		return "product/edit_product";
 	}
 
-	@PostMapping("/products/update")
+	@PostMapping("/admin/edit")
 	public String updateProduct(@ModelAttribute("product") Product product, HttpSession session) {
-		if (!isAdmin(session)) {
-			return "unauthorized";
-		}
+		if (!isAdmin(session)) return "unauthorized";
 		productService.saveProduct(product);
-		return "redirect:/products";
+		return "redirect:/products/admin";
 	}
 
-	@GetMapping("/products/delete/{id}")
+	@GetMapping("/admin/delete/{id}")
 	public String deleteProduct(@PathVariable Long id, HttpSession session) {
-		if (!isAdmin(session)) {
-			return "unauthorized";
-		}
+		if (!isAdmin(session)) return "unauthorized";
 		productService.deleteProduct(id);
-		return "redirect:/products";
+		return "redirect:/products/admin";
 	}
 }

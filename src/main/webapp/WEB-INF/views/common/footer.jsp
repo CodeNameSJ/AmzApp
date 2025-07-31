@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<footer>
+<!-- footer.jsp -->
+<footer class="footer">
 	<div class="container">
-		<p>&copy; 2025 My Company. All rights reserved.</p>
+		<p>&copy; 2025 AmzApp. All rights reserved.</p>
 	</div>
 </footer>

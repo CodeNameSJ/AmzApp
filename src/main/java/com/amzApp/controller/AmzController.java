@@ -5,9 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AmzController {
-	@GetMapping({"/home", "/"})
-
-	public String home() {
-		return "index";
+	@GetMapping({"/", "/home"})
+	public String showHomePage() {
+		return "home";
 	}
 }

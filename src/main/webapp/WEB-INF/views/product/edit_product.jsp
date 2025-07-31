@@ -1,32 +1,29 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<html>
-<head>
-	<title>Title</title>
-</head>
-<body>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<h2>Edit Product</h2>
-
-<form action="${pageContext.request.contextPath}/products/update" method="post">
-	<input type="hidden" name="id" value="${product.id}"/>
-
-	<label>Name:</label><br/>
-	<label>
-		<input type="text" name="name" value="${product.name}"/>
-	</label><br/><br/>
-
-	<label>Description:</label><br/>
-	<label>
-		<textarea name="description">${product.description}</textarea>
-	</label><br/><br/>
-
-	<label>Price:</label><br/>
-	<label>
-		<input type="number" step="0.01" name="price" value="${product.price}"/>
-	</label><br/><br/>
-
-	<input type="submit" value="Update"/>
-</form>
-
-</body>
-</html>
+<%@ include file="../common/header.jsp" %>
+<main class="form-container">
+	<h2>Edit Product</h2>
+	<form action="${pageContext.request.contextPath}/admin/products/update" method="post">
+		<input type="hidden" name="id" value="${product.id}"/>
+		<label>Name</label>
+		<label>
+			<input type="text" name="name" value="${product.name}" required/>
+		</label>
+		<label>Description</label>
+		<label>
+			<textarea name="description" required>${product.description}</textarea>
+		</label>
+		<label>Price</label>
+		<label>
+			<input type="number" name="price" step="0.01" value="${product.price}" required/>
+		</label>
+		<label>Quantity</label>
+		<label>
+			<input type="number" name="quantity" value="${product.quantity}" required/>
+		</label>
+		<label>Image URL</label>
+		<label>
+			<input type="text" name="imageUrl" value="${product.imageUrl}"/>
+		</label>
+		<button type="submit" class="btn btn-primary">Update Product</button>
+	</form>
+</main>
+<%@ include file="../common/footer.jsp" %>

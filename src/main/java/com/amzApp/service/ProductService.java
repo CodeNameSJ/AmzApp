@@ -30,4 +30,13 @@ public class ProductService {
 	public void deleteProduct(Long id) {
 		productRepo.deleteById(id);
 	}
+
+	public void addProduct(Product product) {
+		productRepo.save(product);
+	}
+
+	public void updateProduct(Product product) {
+		productRepo.save(product);
+	}
+
 }

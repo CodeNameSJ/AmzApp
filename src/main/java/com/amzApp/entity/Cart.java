@@ -1,11 +1,7 @@
 package com.amzApp.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 import org.springframework.stereotype.Component;
 
@@ -15,12 +11,29 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Component
 @Entity
 public class Cart {
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cartId;
 
+	@ManyToOne
+	@JoinColumn(name = "product_id")
+	private Product product;
+
+	@Column(name = "user_email")
+	private String userEmail;
+
+	private int quantity;
+
+	public Cart(Product product, String userEmail, int quantity) {
+		this.product = product;
+		this.userEmail = userEmail;
+		this.quantity = quantity;
+	}
 
 	@Override
 	public final boolean equals(Object o) {

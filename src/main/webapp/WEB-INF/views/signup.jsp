@@ -16,7 +16,6 @@
 		<span class="span">Already have an account?<a
 				href="${pageContext.request.contextPath}/login">Login</a></span>
 	</form>
-=======
 	<div class="auth-form">
 		<h2>Sign Up</h2>
 		<form action="/signup" method="post">
